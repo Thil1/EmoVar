@@ -205,7 +205,6 @@ text 用户输入 → 编码 → 更新状态
 - **约翰·R·弗斯**：感谢他的名言"观其伴，知其意"。
 - **Augustyn (2025)** 及《Semantic Representations Are Updated Across the Lifespan Reflecting Diachronic Language Change》的作者。
 - **Telli & Bilge (2024)** 及《Literally or prosodically? Recognising emotional discourse in alexithymia》的作者。
-- **魔搭社区（ModelScope）**：感谢提供免费算力和 MS-Swift 工具，使微调实验成为可能。
 - **Datawhale 社区**：感谢其开源教程《动手学大模型》《happy-llm》等，帮我打下实践基础。
 - **arXiv**：感谢这个开放的预印本平台，让我能接触到前沿论文。
 - 以及所有在 GitHub、知乎、B 站上分享知识和见解的开发者们，你们的每一次讨论都让我受益匪浅。
@@ -228,8 +227,6 @@ text 用户输入 → 编码 → 更新状态
 
 ---
 
----
-
 # 📚 目录
 
 - [🚀 快速开始](#-快速开始)
@@ -249,7 +246,6 @@ text 用户输入 → 编码 → 更新状态
 
 ---
 
----
 
 # 🚀 快速开始
 
