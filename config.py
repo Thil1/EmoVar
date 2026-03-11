@@ -4,7 +4,17 @@ EmoVar 全局配置管理
 """
 
 import os
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from typing import Optional
+
+
+def _get_default_device() -> str:
+    """自动检测默认设备"""
+    try:
+        import torch
+        return 'cuda' if torch.cuda.is_available() else 'cpu'
+    except ImportError:
+        return 'cpu'
 
 
 @dataclass
@@ -15,13 +25,13 @@ class Config:
     encoder_model: str = 'all-MiniLM-L6-v2'
     encoder_device: str = 'cpu'
     
-    # 生成模型配置
+    # 生成模型配置 - 自动检测CUDA
     generator_model: str = 'gpt2'
-    generator_device: str = 'cuda'
+    generator_device: str = field(default_factory=_get_default_device)
     
     # 状态管理配置
     state_fusion_alpha: float = 0.7  # 新状态权重（融合时）
-    state_decay_rate: float = 0.95   # 状态衰减率
+    state_decay_rate: float = 0.95  # 状态衰减率
     
     # 生成参数配置
     max_length: int = 100
@@ -39,7 +49,7 @@ class Config:
             encoder_model=os.getenv('EMOVAR_ENCODER_MODEL', 'all-MiniLM-L6-v2'),
             encoder_device=os.getenv('EMOVAR_ENCODER_DEVICE', 'cpu'),
             generator_model=os.getenv('EMOVAR_GENERATOR_MODEL', 'gpt2'),
-            generator_device=os.getenv('EMOVAR_GENERATOR_DEVICE', 'cuda'),
+            generator_device=os.getenv('EMOVAR_GENERATOR_DEVICE', _get_default_device()),
             state_fusion_alpha=float(os.getenv('EMOVAR_FUSION_ALPHA', '0.7')),
             state_decay_rate=float(os.getenv('EMOVAR_DECAY_RATE', '0.95')),
             max_length=int(os.getenv('EMOVAR_MAX_LENGTH', '100')),
